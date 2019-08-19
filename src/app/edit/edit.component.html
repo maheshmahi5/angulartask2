@@ -1,0 +1,177 @@
+<div>
+    <form *ngIf=view align="center" [formGroup]="regForm">
+        <table  class="tab1" border="1" align="center">
+
+            <div>
+
+                <label for="dept_name : ">dept_name</label>
+                <input type="text" formControlName="dept_name" name="dept_name" autocomplete="off">
+                <div *ngIf="regForm.controls['dept_name'].invalid && (regForm.controls['dept_name'].dirty || regForm.controls['dept_name'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.controls['dept_name'].errors.required" class="error">
+                        dept_name is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <div class="form-check">
+                <label for="status">status</label>
+                &nbsp;&nbsp;&nbsp;Active<input type="radio"   value="1" formControlName="status" name="status"  />
+                &nbsp;&nbsp;&nbsp;Inactive<input type="radio" value="0" formControlName="status"  name="status" />
+                <div *ngIf="regForm.controls['status'].invalid && (regForm.controls['status'].dirty || regForm.controls['status'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.controls['status'].errors.required" class="error">
+                        status is required.
+                    </div>
+                </div>
+            </div>
+            </div>
+            <br>
+            <br>
+
+            <div>
+                <span> <button (click)="close()">Close</button>&nbsp;
+                    <button (click)="updDept(regForm.value)"
+                        [disabled]="regForm.pristine || regForm.invalid ">Update</button>
+                </span>
+            </div>
+
+        </table>
+    </form>
+</div>
+<div>
+    <form *ngIf=!view align="center" [formGroup]="registerForm">
+    <div class="form-row align-items-center">
+        <table class="tab1" border="1" align="center">
+
+            <div>
+                <label for="Username : ">Username :  </label>
+                <input type="text" formControlName="Username" name="Username" autocomplete="off">
+                <div *ngIf="registerForm.controls['Username'].invalid && (registerForm.controls['Username'].dirty || registerForm.controls['Username'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registerForm.controls['Username'].errors.required" class="error">
+                        Username is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['Username'].errors.minlength" class="error">
+                        Username must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label for="First_name : ">First_name  : </label>
+                <input type="text" formControlName="First_name" name="First_name" autocomplete="off">
+                <div *ngIf="registerForm.controls['First_name'].invalid && (registerForm.controls['First_name'].dirty || registerForm.controls['First_name'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registerForm.controls['First_name'].errors.required" class="error">
+                        First_name is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['First_name'].errors.minlength" class="error">
+                        First_name must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label for="Last_name : ">Last_name  : </label>
+                <input type="text" formControlName="Last_name" name="Last_name" autocomplete="off">
+                <div *ngIf="registerForm.controls['Last_name'].invalid && (registerForm.controls['Last_name'].dirty || registerForm.controls['Last_name'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registerForm.controls['Last_name'].errors.required" class="error">
+                        Last_name is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['Last_name'].errors.minlength" class="error">
+                        Last_name must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                    <label for="mydate : ">DOB : </label>
+                    <my-date-picker name="myDate" [options]="myDatePickerOptions" formControlName="myDate"></my-date-picker>
+                    <div *ngIf="registerForm.controls['myDate'].invalid && (registerForm.controls['myDate'].dirty || registerForm.controls['myDate'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="registerForm.controls['myDate'].errors.required" class="error">
+                            DOB is required.
+                        </div>
+                    </div>
+                </div>
+            <br>
+            <br>
+            <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <br>  <button  type="button" (click)="addphno()" >Add</button>
+                <div formArrayName="phone_no" *ngFor="let item of registerForm.get('phone_no').controls; let i = index;">
+                  <div [formGroupName]="i">
+                    <br>
+                    <input formControlName="number" placeholder="phone number">
+                  </div>
+                  <div *ngIf=" registerForm.get('phone_no').controls[i].controls['number'].invalid &&
+           (registerForm.get('phone_no').controls[i].controls['number'].dirty ||
+           registerForm.get('phone_no').controls[i].controls['number'].touched)">
+                    <div *ngIf="registerForm.get('phone_no').controls[i].controls['number'].errors.required" class="error">
+                      <p> phone no required </p>
+                    </div>
+                    <div *ngIf="registerForm.get('phone_no').controls[i].controls['number'].errors.pattern" class="error">
+                        phone_no must follow pattern.
+                    </div>
+                </div>
+                  <br>
+                  <button type="button" (click)="delete(i)" >Delete</button>
+
+            </div>
+    
+              </div>
+            <br>
+            <br>
+            <div>
+                <div class="input-group-text">
+                    <div class="custom-control custom-checkbox mr-sm-2">
+                <label for="dept_id : ">Dept_id : </label>
+                <select formControlName="dept_id" name="dept_id">
+                    <option value="1">IT</option>
+                    <option value="2">ECE</option>
+                    <option value="3">EEE</option>
+                    <option value="4">MECH</option>
+                    <option value="5">CIVIL</option>
+                    <option value="6">CSE</option>
+                </select>
+                <div *ngIf="registerForm.controls['dept_id'].invalid && (registerForm.controls['dept_id'].dirty || registerForm.controls['dept_id'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registerForm.controls['dept_id'].errors.required" class="error">
+                        dept_id is required.
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label for="status">status </label>
+                &nbsp;&nbsp;&nbsp;Active<input type="radio"   value="1" formControlName="status" name="status"  />
+                &nbsp;&nbsp;&nbsp;Inactive<input type="radio" value="0" formControlName="status"  name="status" />
+                <div *ngIf="registerForm.controls['status'].invalid && (registerForm.controls['status'].dirty || registerForm.controls['status'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registerForm.controls['status'].errors.required" class="error">
+                        status is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <span> <button class="tooltip-test" (click)="close()">Close</button>&nbsp;
+                    <button (click)="updEmp(registerForm.value)"
+                        [disabled]="registerForm.pristine || registerForm.invalid ">Submit</button>
+                </span>
+            </div>
+        </table>
+    </div>
+    </form>
+</div>

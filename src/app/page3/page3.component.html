@@ -1,0 +1,193 @@
+<!-- Navigation bar html on page 3 -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(155, 200, 241)">
+    <a class="navbar-brand" (click)="prfl()">PROFILE</a>
+    <a class="nav-item nav-link active" (click)="page1()">Department</a>
+    <a class="nav-link" (click)="page2()">Employees</a>
+    <a class="nav-link" (click)="page3()">Role</a>
+    <a class="nav-link" (click)="design()">Design</a>
+    <a class="nav-link" (click)="navtocalender()">calender</a>
+    <a class="nav-link" (click)="back()">Sign Out</a>
+    
+
+</nav>
+
+<!-- Department table  html -->
+
+<div class="card w-50" style="margin-left: 25%">
+    <h2 *ngIf=view align="center">Department List</h2>
+    <span *ngIf=view> <button style="float: right" class="btn btn-warning" id=addbtn
+        (click)="add()">ADD</button>
+        <input  type="search" style="width: 30%; float :right" placeholder="Search"
+            aria-label="Search" [(ngModel)]="searchdep"></span>
+
+    <table *ngIf=view class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+        <thead class="thead-dark">
+            <tr>
+                <!-- table headers -->
+                <th style="width: 10%">
+                    <mfDefaultSorter by="dept_id">dept_id</mfDefaultSorter>
+                </th>
+                <th style="width: 10%">
+                    <mfDefaultSorter by="dept_name">dept_name</mfDefaultSorter>
+                </th>
+                <th style="width: 10%">
+                    <mfDefaultSorter by="status">status</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                    <mfDefaultSorter by="Employees">Employees</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- table body with data -->
+            <tr *ngFor="let i of mf.data| LockFilter : searchdep; let n=index">
+                <td>{{i.dept_id}}</td>
+                <td>{{i.dept_name}}</td>
+                <td *ngIf=i.status class="badge badge-success">Active</td>
+                <td *ngIf=!i.status class="badge badge-danger">Inactive</td>
+                <td>{{i.employee}}</td>
+                <div class="btn-group" role="toolbar">
+                    <td><button class="btn btn-success" (click)="editdept(i)">Edit</button><button
+                            class="btn btn-danger" (click)="delfrmdept(i.dept_id)" data-toggle="modal"
+                            data-target="#exampleModal">Delete</button></td>
+                </div>
+            </tr>
+        </tbody>
+        <!-- table footer -->
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- Employee table -->
+
+<div class="card w-55">
+    <h2 *ngIf=!view align="center">Employees List</h2>
+    <span *ngIf=!view><button style="float: right" class="btn btn-warning" id=addbtn (click)="add()">ADD</button><input type="search" style="width: 20%;float: right" placeholder="Search"
+            aria-label="Search" [(ngModel)]="searchemp"></span>
+    <table *ngIf=!view border="2" class="table table-striped" [mfData]="data2" #mf2="mfDataTable" [mfRowsOnPage]="5">
+        <tr>
+            <!-- table headers -->
+            <th data-toggle="popover" data-trigger="focus" title="Employee ID"
+                data-content="And here's some amazing content. It's very engaging. Right?">
+                <mfDefaultSorter by="emp_id">Emp Id</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="Username">Username</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="First_name">First_name</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="Last_name">Last_name</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="DOB">DOB</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="phone_no">phone No</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="dept_name">Dept Name</mfDefaultSorter>
+            </th>
+            <th style="width: 10%">
+                <mfDefaultSorter by="status">status</mfDefaultSorter>
+            </th>
+            <th>Action</th>
+        </tr>
+        <tbody>
+            <!-- table body with data -->
+            <tr *ngFor="let j of mf2.data| LockFilter : searchemp; let n=index">
+                <td>{{j.emp_id}}</td>
+                <td>{{j.Username}}</td>
+                <td>{{j.First_name}}</td>
+                <td>{{j.Last_name}}</td>
+                <td>{{j.dob}}</td>
+                <td>{{j.phone_no}}</td>
+                <td>{{j.dept_name}}</td>
+                <td *ngIf=j.status class="badge badge-success">Active</td>
+                <td *ngIf=!j.status class="badge badge-danger">Inactive</td>
+                <td><button class="btn btn-info" (click)="empview(j)">view</button><button class=" btn btn-success"
+                        (click)="empyedit(j)">Edit</button>
+                    <button class=" btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                        (click)="delfrmempy(j.id)">Delete</button></td>
+
+            </tr>
+        </tbody>
+        <!-- table footer -->
+        <tfoot>
+            <tr>
+                <td colspan="9">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<!-- Modal -->
+
+<!-- pop up for delete function -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete it ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="delusingpopup()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Profile PopUP
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="card w-50" style="margin-left: 30%">
+                <table align="center" border="2" cellspacing=10 class="table table-dark">
+                    <tr><td>ID : </td><td>{{abc.id}}</td></tr>
+                    <tr><td>User Name: </td><td>{{abc.Username }}</td></tr>
+                    <tr><td>First Name : </td><td>{{abc.First_name}}</td></tr>
+                    <tr><td>Last Name : </td><td>{{abc.Last_name}}</td></tr>
+                    <tr><td>DOB : </td><td>{{abc.dob}}</td></tr>
+                    <tr><td>phone No : </td><td>{{abc.phone_no}}</td></tr>
+                    <tr><td>Department Name : </td><td>{{abc.dept_name}}</td></tr>
+                    </table>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,64 @@
+<button class="btn btn-secondary" (click)="back()">back</button>
+<br>
+<br>
+<h2 style="text-align: center" class="r1">
+    <font color="orangered">ROLE MANAGEMENT </font>
+</h2>
+
+<!-- Reporting manager table -->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card w-50">
+            <div class="card-body">
+                <div class="md-form mt-0">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        [(ngModel)]="search">
+                </div>
+                <table style="margin-top: 10%" border="5" align="center" id="rm" class="table table-striped">
+                    <tr>
+                        <th>RM </th>
+                        <th colspan="2"><button class="btn btn-primary" (click)="chngrolerm()">Change</button></th>
+                    </tr>
+                    <tr>
+                        <th>emp_Id</th>
+                        <th>Username </th>
+                        <th>Role</th>
+                    </tr>
+                    <tr *ngFor='let i of (rmData | LockFilter : search)'>
+                        <td>{{i.emp_id}}</td>
+                        <td>{{i.Username}}</td>
+                        <td>{{i.role}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- HR management table -->
+    <div class="col-sm-6">
+        <div class="card w-50" style="margin-left: 30%">
+            <div class="card-body">
+                <div class="md-form mt-0">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        [(ngModel)]="search1">
+                </div>
+                <table border="5" style="margin-top: 10%" align="center" id="hr" class="table table-striped">
+                    <tr>
+                        <th>HR </th>
+                        <th colspan="2"><button class="btn btn-primary" (click)="chngrolehr()">Change</button></th>
+                    </tr>
+                    <tr>
+                        <th>emp_Id</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                    </tr>
+                    <tr *ngFor='let i of (hrData | LockFilter : search1)'>
+                        <td>{{i.emp_id}}</td>
+                        <td>{{i.Username}}</td>
+                        <td>{{i.role}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

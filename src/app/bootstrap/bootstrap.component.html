@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+
+    <div class=" border-right bg-primary " id="sidebar-wrapper" >
+      <div class="sidebar-heading" >SB ADMIN 2 </div>
+      <div class="list-group list-group-flush bg-primary">
+        <a  class="list-group-item list-group-item-action ">Dashboard</a>
+        Interface
+        <a  class="list-group-item list-group-item-action ">Components</a>
+        <a  class="list-group-item list-group-item-action ">Utalities</a>
+        ADD ONS
+        <a  class="list-group-item list-group-item-action ">pages</a>
+        <a  class="list-group-item list-group-item-action ">chats</a>
+        <a class="list-group-item list-group-item-action ">Tables</a>
+      </div>
+    </div>
+
+
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+       
+    
+        
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+         <form class="form-inline ml-auto">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <p><i class="fa fa-search" aria-hidden="true"></i>
+                  </form>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                    <i class="fa fa-bell" style="font-size: 30px" aria-hidden="true"></i>
+            </li>
+            &nbsp; &nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+                <i class="fa fa-envelope" style="font-size: 30px" aria-hidden="true"></i>  
+            </li>
+            &nbsp; &nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+                  <i class="fa fa-user-o" style="font-size: 30px" aria-hidden="true"></i>
+               
+          </li>
+            <!-- <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a> -->
+              <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div> 
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <h2><span>Dashboard 
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="bg bg-primary"  style="font-size: 15px;" >Generate Report&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></span></h2>
+          <div class="row ">
+                <div class="col-sm-3 bg-warning">
+                  <div class="card  ">
+                    <div class="card-body">
+                      <h5 class="card-title">Earning Monthly</h5>
+                      <h2><p class="card-text">$40,000  &nbsp;&nbsp;&nbsp;<i class="fa fa-calendar" style="font-size: 30px" aria-hidden="true"></i></p></h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 bg-primary">
+                  <div class="card " >
+                    <div class="card-body">
+                      <h5 class="card-title">Earnings(Annual)</h5>
+                     <h2><p class="card-text">240,000  &nbsp;&nbsp;&nbsp;<i class="fa fa-usd" style="font-size: 30px" aria-hidden="true"></i></p></h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 bg-danger border-bottom">
+                        <div class="card  ">
+                          <div class="card-body">
+                            <h5 class="card-title">Tasks &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text" style="font-size: 30px" aria-hidden="true"></i></h5>
+                            <form class="range-field">
+                                  <h2>50% <input type="range" min="0" max="100" /></h2> 
+                                  </form>
+                            <p class="card-text"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-3 bg-info">
+                            <div class="card ">
+                              <div class="card-body">
+                                <h5 class="card-title">Pending Requests</h5>
+                             <h2><p class="card-text">18 &nbsp;&nbsp;&nbsp;<i class="fa fa-comments" style="font-size: 30px" aria-hidden="true"></i></p></h2>
+                              </div>
+                            </div>
+                          </div>
+              </div>
+              <div class="row ">
+                <div class="col-sm-6 ">
+                  <div class="card"  style="width: 30rem; height: 25rem;">
+          
+                      <chart [options]="options" (selection)="onChartSelection($event)"> </chart>
+        
+                  </div>
+                </div>
+                  <div class="col-sm-2 ">
+                    <div class="card "style="width: 30rem; height: 25rem;">
+                        <chart [options]="options1" (selection)="onChartSelection($event)"> </chart>
+                      
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row ">
+                <div class="col-sm-6 ">
+                  <div class="card"  style="width: 30rem; height: 25rem;">
+          
+                      <chart [options]="options4" (selection)="onChartSelection($event)"> </chart>
+        
+                  </div>
+                </div>
+                  <div class="col-sm-2 ">
+                    <div class="card " style="width: 30rem; height: 25rem;">
+                        <chart [options]="options3" (selection)="onChartSelection($event)"> </chart>
+                    
+                    </div>
+                  </div>
+              </div>
+              <div class="row ">
+                <div class="col-sm-6 ">
+                  <div class="card"  style="width: 30rem; height: 25rem;">
+          
+                      <chart [options]="options2" (selection)="onChartSelection($event)"> </chart>
+        
+                  </div>
+                </div>
+                  <div class="col-sm-2 ">
+                    <div class="card " style="width: 30rem; height: 25rem;" >
+                      
+                        <chart [options]="options5" (selection)="onChartSelection($event)"> </chart>
+                      
+                    </div>
+                  </div>
+              </div>
+
+              <div class="row ">
+                <div class="col-sm-6 ">
+                  <div class="card"  style="width: 30rem; height: 25rem;">
+          
+                      <chart [options]="options6" (selection)="onChartSelection($event)"> </chart>
+        
+                  </div>
+                </div>
+                  <div class="col-sm-2 ">
+                    <div class="card " style="width: 30rem; height: 25rem;">
+                      
+                        <chart [options]="options7" (selection)="onChartSelection($event)"> </chart>
+                  
+                    </div>
+                  </div>
+              </div>
+              
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+
+</body>
+
+</html>

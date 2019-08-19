@@ -1,0 +1,27 @@
+<h2 style="text-align: center" class="r1">
+    <font color="blue">LOGIN here</font>
+</h2>
+
+<!-- Login form -->
+<div>
+    <form align="center" [formGroup]="registerForm">
+        <table class="tab1" align="center">
+
+            <div>
+
+                <label for="username">Username : </label>
+                <input type="text" formControlName="Username" name="username" autocomplete="off">
+            </div>
+            <br>
+            <br>
+            <div>
+
+                <label for="password">password : </label>
+                <input type="password" formControlName="password" name="password" autocomplete="off">
+            </div>
+            <br>
+            <br>
+            <button class="btn btn-primary" (click)="signin(registerForm.value)">SIGN IN</button>
+        </table>
+    </form>
+</div>
